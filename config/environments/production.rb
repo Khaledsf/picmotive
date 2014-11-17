@@ -83,5 +83,6 @@ Rails.application.configure do
       :bucket => "picmotive",
       :access_key_id => "AKIAJAN2KE4Z5K7GEOXA",
       :secret_access_key => "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"
+    }
   }
 end
