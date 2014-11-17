@@ -1,27 +1,18 @@
-<h1>Listing posts</h1>
+<div class="row">
+<% @posts.each do |post| %>
+  <div class="col-xs-6 col-md-3">
+    <div class="thumbnail">
+      <%= link_to image_tag(post.photo.url(:medium)), post %>
+      <div class="caption">
+        <h3><%= post.title %></h3>
+        <p>
+          <%= link_to 'Edit', edit_post_path(post), :role => "button", :class => "btn btn-default" %>
+          <%= link_to 'X', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path, :role => "button", :class => "btn btn-default" %>
